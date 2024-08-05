@@ -8,9 +8,9 @@ El proyecto desarrollado a continuación explora la creación de una ecommerce c
 
 - Server Components
 - Client Components
-- Zustand (Manejador de estado)
-- Tailwind
-- CLSX
+- Zustand: manejador de estado minimalista. [Link documentación](https://docs.pmnd.rs/zustand/getting-started/introduction)
+- Tailwind. [Link documentación](https://tailwindcss.com/docs/installation)
+- CLSX: construye cadenas en className condicionalmente. [Link artículo](https://medium.com/@fortune.nwuneke/an-extensive-tutorial-on-using-clsx-in-react-projects-5e41205df8e2)
 - Estructura de directorios
 - Layouts anidados
 - Componentes reutilizables

@@ -17,6 +17,11 @@ El proyecto desarrollado a continuación explora la creación de una ecommerce c
 - Efectos de Blur con Tailwind
 - Efectos con las imágenes de productos
 - Rutas de aplicación
+- Pantallas de error
+- Slideshows (desktop y mobile)
+- Navegación
+- Redirecciones
+- Tablas
 
 ## Requerimientos
 

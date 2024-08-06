@@ -6,6 +6,8 @@ Este es un repositorio personal para ejecución del proyecto del curso **NextJs:
 
 El proyecto desarrollado a continuación explora la creación de una ecommerce completo para aplicar todos los conceptos de NextJs tanto en el desarrollo frontend como backend. Dentro de los conceptos desarrollados se encuentran:
 
+**UI**
+
 - Server Components
 - Client Components
 - Zustand: manejador de estado minimalista. [Link documentación](https://docs.pmnd.rs/zustand/getting-started/introduction)
@@ -22,6 +24,18 @@ El proyecto desarrollado a continuación explora la creación de una ecommerce c
 - Navegación
 - Redirecciones
 - Tablas
+
+**Data Base**
+
+- Docker PostgreSQL
+- Docker Compose
+- Idea de una semilla (seed)
+- Crear enumeraciones de base de datos
+- Tablas
+  - Productos
+  - Categorías
+  - Imágenes de productos
+- Procedimiento independiente dentro del proyecto de Next
 
 ## Requerimientos
 
@@ -43,7 +57,7 @@ Para ejecutar el proyecto se deben seguir los siguientes pasos:
 
 1. Ejecutar en entorno de desarrollo
 
-- Levantar la base de datos
+- Levantar la base de datos (docker)
 
 ```
 docker compose up -d
@@ -67,6 +81,12 @@ npx prisma db push
 
 ```
 npx prisma generate
+```
+
+- Ejecutar el seed (solo en desarrollo) de la base de datos
+
+```
+npm run seed
 ```
 
 - levantar el proyecto

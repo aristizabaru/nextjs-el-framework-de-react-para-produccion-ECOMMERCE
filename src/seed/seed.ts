@@ -15,10 +15,18 @@ type ValidSizes = 'XS' | 'S' | 'M' | 'L' | 'XL' | 'XXL' | 'XXXL';
 type ValidTypes = 'shirts' | 'pants' | 'hoodies' | 'hats';
 
 interface SeedData {
-    products: SeedProduct[],
+    categories: string[];
+    products: SeedProduct[];
 }
 
+
+
+
 export const initialData: SeedData = {
+
+    categories: [
+        'Shirts', 'Pants', 'Hoodies', 'Hats'
+    ],
     products: [
         {
             description: "Introducing the Tesla Chill Collection. The Men’s Chill Crew Neck Sweatshirt has a premium, heavyweight exterior and soft fleece interior for comfort in any season. The sweatshirt features a subtle thermoplastic polyurethane T logo on the chest and a Tesla wordmark below the back collar. Made from 60% cotton and 40% recycled polyester.",
@@ -535,7 +543,7 @@ export const initialData: SeedData = {
         {
             description: "Designed for style and comfort, the ultrasoft Women's T Logo Long Sleeve Scoop Neck Tee features a tonal 3D silicone-printed T logo on the left chest. Made of 50% Peruvian cotton and 50% Peruvian viscose.",
             images: [
-                '8765120-00-A_0_2000.jpg',
+                '8765100-00-A_0_2000.jpg',
                 '8765100-00-A_1.jpg',
             ],
             inStock: 16,

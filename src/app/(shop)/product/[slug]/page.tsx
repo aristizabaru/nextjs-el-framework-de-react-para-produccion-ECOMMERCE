@@ -1,7 +1,16 @@
+export const revalidate = 604800; // 7 días
+
+import type { Metadata, ResolvingMetadata } from 'next';
 import { notFound } from 'next/navigation';
-import { initialData } from '@/seed/seed';
+import { getProductBySlug } from '@/actions';
 import { titleFont } from '@/config';
-import { ProductMobileSlideshow, ProductSlideshow, QuantitySelector, SizeSelector } from '@/components';
+import {
+    ProductMobileSlideshow,
+    ProductSlideshow,
+    QuantitySelector,
+    SizeSelector,
+    StockLabel
+} from '@/components';
 
 interface Props {
     params: {
@@ -9,12 +18,31 @@ interface Props {
     };
 }
 
-const products = initialData.products;
+export async function generateMetadata ( { params }: Props, parent: ResolvingMetadata ): Promise<Metadata> {
+    // read route params
+    const slug = params.slug;
 
-export default function ProductPage ( { params }: Readonly<Props> ) {
+    // Fetch data
+    const product = await getProductBySlug( slug );
+
+    // optionally access and extend (rather than replace) parent metadata
+    // const previousImages = ( await parent ).openGraph?.images || [];
+
+    return {
+        title: product?.title ?? 'Teslo Shop',
+        description: product?.description ?? 'Una tienda inspirada en Tesla',
+        openGraph: {
+            title: product?.title ?? 'Teslo Shop',
+            description: product?.description ?? 'Una tienda inspirada en Tesla',
+            images: [ `/products/${ product?.images.at( 1 ) }` ],
+        },
+    };
+}
+
+export default async function ProductPage ( { params }: Readonly<Props> ) {
 
     const { slug } = params;
-    const product = products.filter( ( { slug: productSlug } ) => productSlug === slug ).at( 0 );
+    const product = await getProductBySlug( slug );
     if ( !product ) notFound();
 
     return (
@@ -28,6 +56,7 @@ export default function ProductPage ( { params }: Readonly<Props> ) {
             </div>
             {/* Detalles */ }
             <div className='col-span-1 px-5'>
+                <StockLabel slug={ slug } />
                 <h1 className={ `${ titleFont.className }  antialiased text-lg` }>
                     { product.title.toUpperCase() }
                 </h1>

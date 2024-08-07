@@ -46,6 +46,16 @@ El proyecto desarrollado a continuación explora la creación de una ecommerce c
 - Paginación del lado del servidor
 - Manejo de SearchParams
 
+**Revalidación y Meta Data**
+
+- Traer información del producto
+- Revalidación de data cada 7 días
+- Renderizar del lado del cliente únicamente información que cambia constantemente
+- Server Actions
+- Información OpenGraph (Meta Data)
+- Cambiar Metadata
+- Detalles a la hora de compartir enlaces en redes sociales
+
 ## Requerimientos
 
 - Node v20.15.0 LTS

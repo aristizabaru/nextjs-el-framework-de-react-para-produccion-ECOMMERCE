@@ -37,6 +37,15 @@ El proyecto desarrollado a continuación explora la creación de una ecommerce c
   - Imágenes de productos
 - Procedimiento independiente dentro del proyecto de Next
 
+**Paginación**
+
+- Obtener data del servidor
+- Paginar resultados
+- Añadir condiciones
+- Re-utilización de componentes
+- Paginación del lado del servidor
+- Manejo de SearchParams
+
 ## Requerimientos
 
 - Node v20.15.0 LTS

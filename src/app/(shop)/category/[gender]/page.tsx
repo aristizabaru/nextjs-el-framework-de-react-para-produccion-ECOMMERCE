@@ -1,5 +1,6 @@
 export const revalidate = 60; // segundos
 
+import { Metadata, ResolvingMetadata } from 'next';
 import { notFound, redirect } from 'next/navigation';
 import { getPaginatedProductsWithImages } from '@/actions';
 import { Pagination, ProductGrid, Title } from '@/components';
@@ -15,11 +16,21 @@ interface Props {
 }
 
 const labels: Record<string, string> = {
-    men: 'HOMBRES',
-    women: 'MUJERES',
-    kid: 'NIÑOS',
-    unisex: 'UNISEX'
+    men: 'Hombres',
+    women: 'Mujeres',
+    kid: 'Niños',
+    unisex: 'Unisex'
 };
+
+export async function generateMetadata ( { params }: Props, parent: ResolvingMetadata ): Promise<Metadata> {
+
+    const gender = params.gender;
+
+    return {
+        title: labels[ gender ] ?? 'Teslo Shop',
+        description: 'Una tienda inspirada en Tesla',
+    };
+}
 
 export default async function CategoryPage ( { params, searchParams }: Readonly<Props> ) {
 
@@ -36,7 +47,7 @@ export default async function CategoryPage ( { params, searchParams }: Readonly<
     return (
         <>
             <Title
-                title={ categoryTitle }
+                title={ categoryTitle.toUpperCase() }
                 subtitle='Todos los productos'
                 className='mb-2'
             />

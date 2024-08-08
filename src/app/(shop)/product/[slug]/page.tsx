@@ -7,10 +7,9 @@ import { titleFont } from '@/config';
 import {
     ProductMobileSlideshow,
     ProductSlideshow,
-    QuantitySelector,
-    SizeSelector,
     StockLabel
 } from '@/components';
+import { AddToCart } from './ui/AddToCart';
 
 interface Props {
     params: {
@@ -61,12 +60,8 @@ export default async function ProductPage ( { params }: Readonly<Props> ) {
                     { product.title.toUpperCase() }
                 </h1>
                 <p className='text-sm mb-5 font-bold'>$ { product.price }</p>
-                {/* Selector de tallas */ }
-                <SizeSelector selectedSize={ product.sizes.at( 1 )! } availableSizes={ product.sizes } />
-                {/* Selector de cantidad */ }
-                <QuantitySelector quantity={ 2 } />
-                {/* Botón */ }
-                <button className='btn-primary my-5'>Agregar al carrito</button>
+                {/* Add to cart */ }
+                <AddToCart product={ product } />
                 {/* Descripción */ }
                 <h3 className='font-bold text-sm mb-2 mt-4'>Descripción</h3>
                 <p className='font-light'>{ product.description }</p>

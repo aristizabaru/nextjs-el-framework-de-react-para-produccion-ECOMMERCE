@@ -56,6 +56,15 @@ El proyecto desarrollado a continuación explora la creación de una ecommerce c
 - Cambiar Metadata
 - Detalles a la hora de compartir enlaces en redes sociales
 
+**Carrito de compra**
+
+- Zustand con NextJS App Directory
+- Problemas de hidratación
+- Manejo de estado del lado del cliente
+- Manejo del carrito de compras
+- Remover y cambiar cantidad desde la pantalla del carrito de compras
+- Formato de moneda sin dependencias
+
 ## Requerimientos
 
 - Node v20.15.0 LTS

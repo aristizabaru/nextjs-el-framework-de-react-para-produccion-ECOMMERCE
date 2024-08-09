@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { inter } from '@/config';
+import { Provider } from '@/components';
 import "./globals.css";
+import { auth } from '@/auth';
 
 export const metadata: Metadata = {
   title: {
@@ -10,10 +12,13 @@ export const metadata: Metadata = {
   description: "Una tienda virtual de productos",
 };
 
-export default function RootLayout ( { children, }: Readonly<{ children: React.ReactNode; }> ) {
+export default async function RootLayout ( { children, }: Readonly<{ children: React.ReactNode; }> ) {
+
   return (
     <html lang="es">
-      <body className={ inter.className }>{ children }</body>
+      <Provider>
+        <body className={ inter.className }>{ children }</body>
+      </Provider>
     </html>
   );
 }

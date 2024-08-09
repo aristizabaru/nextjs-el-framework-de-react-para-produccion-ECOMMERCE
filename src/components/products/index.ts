@@ -1,2 +1,2 @@
-export * from './product-grid/ProductGrid';
-export * from './product-grid/ProductGridItem';
+export { ProductGrid } from './product-grid/ProductGrid';
+export { ProductGridItem } from './product-grid/ProductGridItem';

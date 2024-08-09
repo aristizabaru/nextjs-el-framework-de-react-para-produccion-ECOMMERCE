@@ -5,8 +5,6 @@ import { OrderSummary } from './ui/OrderSummary';
 
 export default function CartPage () {
 
-    // if ( !productsInCart.length ) redirect( '/empty' );
-
     return (
         <div className='flex justify-center items-center px-10 sm:px-0'>
             <div className='flex flex-col w-[1000px]'>

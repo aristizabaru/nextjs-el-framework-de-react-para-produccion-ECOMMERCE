@@ -65,6 +65,25 @@ El proyecto desarrollado a continuación explora la creación de una ecommerce c
 - Remover y cambiar cantidad desde la pantalla del carrito de compras
 - Formato de moneda sin dependencias
 
+**Autenticación**
+
+- Next Auth
+- Custom Login
+- Custom SignUp
+- Aproximaciones para manejo de server actions
+  - Desde Form Actions
+  - Desde funciones
+- Varios hooks propios de React Dom
+- Estado de formularios sin JavaScript
+- Validaciones de formularios
+- React Hook Form
+- Sesiones
+- Extensión de sesiones
+- Protección de rutas
+- Seed de usuarios
+- Encriptación de contraseñas
+- Validación de usuarios
+
 ## Requerimientos
 
 - Node v20.15.0 LTS
@@ -91,8 +110,8 @@ Para ejecutar el proyecto se deben seguir los siguientes pasos:
 docker compose up -d
 ```
 
-- Renombrar el `.env.test` a `.env`
-- Reemplazar las variables de entorno
+- Copiar `.env.test` a `.env`
+- Reemplazar las variables de entorno. Siga las instrucciones en el archivo `.env`
 - Generar nueva migración (Prisma ORM)
 
 ```

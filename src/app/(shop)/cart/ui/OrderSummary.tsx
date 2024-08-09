@@ -15,7 +15,6 @@ export const OrderSummary = () => {
         setLoaded( true );
     }, [] );
 
-
     if ( !loaded ) {
         // Aquí va skeleton
         return (

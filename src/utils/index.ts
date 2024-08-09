@@ -1,3 +1,3 @@
-export * from './currencyFormatter';
-export * from './generatePaginationNumbers';
-export * from './sleep';
+export { currencyFormatter } from './currencyFormatter';
+export { generatePaginationNumbers } from './generatePaginationNumbers';
+export { sleep } from './sleep';

@@ -1,5 +1,5 @@
-export * from './footer/Footer';
-export * from './not-found/PageNotFound';
-export * from './title/Title';
-export * from './top-menu/TopMenu';
-export * from './pagination/Pagination';
+export { Footer } from './footer/Footer';
+export { PageNotFound } from './not-found/PageNotFound';
+export { Title } from './title/Title';
+export { TopMenu } from './top-menu/TopMenu';
+export { Pagination } from './pagination/Pagination';

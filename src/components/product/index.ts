@@ -1,5 +1,5 @@
-export * from './quantity-selector/QuantitySelector';
-export * from './size-selector/SizeSelector';
-export * from './slideshow/ProductMobileSlideshow';
-export * from './slideshow/ProductSlideshow';
-export * from './stock-label/StockLabel';
+export { QuantitySelector } from './quantity-selector/QuantitySelector';
+export { SizeSelector } from './size-selector/SizeSelector';
+export { ProductMobileSlideshow } from './slideshow/ProductMobileSlideshow';
+export { ProductSlideshow } from './slideshow/ProductSlideshow';
+export { StockLabel } from './stock-label/StockLabel';

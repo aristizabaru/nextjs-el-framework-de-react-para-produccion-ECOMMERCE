@@ -84,6 +84,20 @@ El proyecto desarrollado a continuación explora la creación de una ecommerce c
 - Encriptación de contraseñas
 - Validación de usuarios
 
+**Gestión de dirección de entrega**
+
+- Zustand Address Store
+- Persistencia
+- Almacenar en base de datos la dirección del usuario
+- Relaciones uno a uno
+- Relaciones uno a muchos
+- Server Actions para:
+  - Guardar dirección
+  - Actualizar la dirección
+  - Borrar la dirección
+- React Hook Form
+- Conectar Zustand con UseForm con Base de datos
+
 ## Requerimientos
 
 - Node v20.15.0 LTS

@@ -21,7 +21,8 @@ export const ShopMenu = () => {
                 <span className='ml-3 uppercase font-light'>Perfil</span>
             </Link>
             <Link
-                href={ '/' }
+                href={ '/orders' }
+                onClick={ () => closeSideMenu() }
                 className='flex items-center mt-10 p-2 hover:bg-gray-100 rounded transition-all'
             >
                 <IoTicketOutline size={ 20 } />

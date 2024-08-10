@@ -56,5 +56,5 @@ body {
 }
 
 .btn-disabled {
-  @apply bg-gray-600 text-white py-2 px-4 rounded transition-all;
+  @apply bg-gray-600 text-white py-2 px-4 rounded transition-all cursor-none pointer-events-none;
 }

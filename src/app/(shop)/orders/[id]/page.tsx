@@ -1,8 +1,10 @@
+import { getOrderById } from '@/actions';
 import { Title } from '@/components';
 import { initialData } from '@/seed/seed';
+import { currencyFormatter } from '@/utils';
 import clsx from 'clsx';
 import Image from 'next/image';
-import Link from 'next/link';
+import { redirect } from 'next/navigation';
 import { IoCartOutline } from 'react-icons/io5';
 
 const productsInCart = [
@@ -17,9 +19,19 @@ interface Props {
     };
 }
 
-export default function OrderPage ( { params }: Readonly<Props> ) {
+const TAX = 19;
+
+export default async function OrderPage ( { params }: Readonly<Props> ) {
 
     const { id } = params;
+
+    const { ok, order } = await getOrderById( id );
+
+    if ( !ok ) redirect( '/' );
+
+    console.log( order );
+    const address = order!.orderAddress;
+
 
     return (
         <div className='flex justify-center items-center px-10 sm:px-0'>
@@ -32,23 +44,22 @@ export default function OrderPage ( { params }: Readonly<Props> ) {
                             clsx(
                                 'flex items-center rounded-lg py-2 px-3.5 text-xs font-bold text-white mb-5',
                                 {
-                                    'bg-rose-500': false,
-                                    'bg-teal-500': true,
+                                    'bg-rose-500': !order!.isPaid,
+                                    'bg-teal-500': order!.isPaid,
 
                                 }
                             )
                         }>
                             <IoCartOutline size={ 30 } />
-                            {/* <span className='mx-2'>Pendiente de pago</span> */ }
-                            <span className='mx-2'>Pagada</span>
+                            <span className='mx-2'>{ order!.isPaid ? 'Orden pagada' : 'Orden pendiente de pago' }</span>
                         </div>
                         {/* items */ }
                         {
-                            productsInCart.map( product => (
-                                <div key={ product?.slug } className='flex mb-4'>
+                            order!.orderItem.map( item => (
+                                <div key={ `${ item.product.slug } - ${ item.size }` } className='flex mb-4'>
                                     <Image
-                                        src={ `/products/${ product?.images.at( 0 ) }` }
-                                        alt={ product?.title ?? 'Teslo shop' }
+                                        src={ `/products/${ item.product.productImages[ 0 ].url }` }
+                                        alt={ item.product?.title ?? 'Teslo shop' }
                                         width={ 100 }
                                         height={ 100 }
                                         style={ {
@@ -59,9 +70,9 @@ export default function OrderPage ( { params }: Readonly<Props> ) {
                                         className='mr-5'
                                     />
                                     <div>
-                                        <p className='text-xs'>{ product?.title.toUpperCase() }</p>
-                                        <p className='text-sm mb-2'>$ { product?.price } x 2</p>
-                                        <p className='text-sm'><span className='font-bold'>Subtotal:</span> $ { product?.price! * 3 }</p>
+                                        <p className='text-xs'>{ item.product?.title.toUpperCase() }</p>
+                                        <p className='text-sm mb-2'>{ currencyFormatter( item.price ) } x 2</p>
+                                        <p className='text-sm'><span className='font-bold'>Subtotal:</span> { currencyFormatter( item.price * 3 ) }</p>
                                     </div>
                                 </div>
                             ) )
@@ -72,23 +83,22 @@ export default function OrderPage ( { params }: Readonly<Props> ) {
 
                         <h2 className='text-2xl mb-6'>Dirección de entrega</h2>
                         <div className="flex flex-col gap-y-1">
-                            <p>Andrés Aristizábal</p>
-                            <p>Calle 24 #56 - 70</p>
-                            <p>Envigado</p>
-                            <p>ZIP 456785</p>
+                            <p>{ `${ address!.firstName } ${ address!.lastName }` }</p>
+                            <p>{ `${ address!.address }, ${ address!.countryId }` }</p>
+                            <p>Zip Code { address!.postalCode }</p>
                         </div>
                         {/* Divider */ }
                         <div className='w-full h-[1px]  bg-gray-200 my-8' />
                         <h2 className='text-2xl mb-6'>Resumen de orden</h2>
                         <div className='grid grid-cols-2 gap-y-1'>
                             <span className='font-bold'>No. Productos</span>
-                            <span className='text-right'>3 artículos</span>
+                            <span className='text-right'>{ order?.itemsInOrder } artículos</span>
                             <span className='font-bold'>Subtotal</span>
-                            <span className='text-right'>$ 100</span>
-                            <span className='font-bold'>IVA (19%)</span>
-                            <span className='text-right'>$ 19</span>
+                            <span className='text-right'>{ order!.subTotal }</span>
+                            <span className='font-bold'>IVA ({ TAX }%)</span>
+                            <span className='text-right'>{ currencyFormatter( order!.tax ) }</span>
                             <span className='font-bold text-2xl mt-5'>TOTAL</span>
-                            <span className='text-right text-2xl mt-5'>$ 19</span>
+                            <span className='text-right text-2xl mt-5'>{ currencyFormatter( order!.total ) }</span>
                         </div>
 
                     </div>

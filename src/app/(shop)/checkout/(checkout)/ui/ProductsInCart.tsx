@@ -1,33 +1,20 @@
 'use client';
 
-import { QuantitySelector } from '@/components';
 import { useCartStore } from '@/store';
+import { currencyFormatter } from '@/utils';
 import Image from 'next/image';
-import Link from 'next/link';
+
 import { redirect } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
 export const ProductsInCart = () => {
 
-    const updateProductQuantity = useCartStore( state => state.updateProductQuantity );
-    const removeProductFromCart = useCartStore( state => state.removeProductFromCart );
     const productsInCart = useCartStore( state => state.cart );
     const [ loaded, setLoaded ] = useState( false );
 
     useEffect( () => {
         setLoaded( true );
     }, [] );
-
-    useEffect( () => {
-        redirectOnEmptyCart();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [ productsInCart ] );
-
-    const redirectOnEmptyCart = () => {
-        if ( productsInCart.length ) return;
-
-        redirect( '/empty' );
-    };
 
     if ( !loaded ) {
         // Aquí va skeleton
@@ -54,19 +41,15 @@ export const ProductsInCart = () => {
                             className='mr-5'
                         />
                         <div>
-                            <Link href={ `/product/${ product.slug }` } className='text-xs hover:underline'>
-                                { `${ product.size } - ${ product.title.toUpperCase() }` }
-                            </Link>
-                            <p className='text-sm mb-2'>$ { product.price }</p>
-                            <QuantitySelector
-                                quantity={ product.quantity }
-                                onQuantityChanged={ quantity => updateProductQuantity( product, quantity ) }
-                            />
-                            <button
-                                onClick={ () => removeProductFromCart( product ) }
-                                className='underline mt-3 text-sm'>
-                                Remover
-                            </button>
+                            <span
+                                // href={ `/product/${ product.slug }` }
+                                className='text-xs mb-2 block leading-5'>
+                                { `${ product.size } - ${ product.title.toUpperCase() } x ( ${ product.quantity } )` }
+                            </span>
+                            <p className='text-sm mb-2 font-bold'>
+                                $ { currencyFormatter( product.price * product.quantity ) }
+                            </p>
+
                         </div>
                     </div>
                 ) )

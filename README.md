@@ -98,6 +98,18 @@ El proyecto desarrollado a continuación explora la creación de una ecommerce c
 - React Hook Form
 - Conectar Zustand con UseForm con Base de datos
 
+**Creación de órdenes**
+
+- Relaciones uno a uno
+- Relaciones de uno a muchos
+- Transacciones de base de datos
+- [Transacciones con Prisma](https://www.prisma.io/docs/orm/prisma-client/queries/transactions#interactive-transactions)
+- Manejo de inventario
+- Crear ordenes
+- Maestro - Detalle
+- Server actions
+- Consideraciones a la hora de crear la orden basado en un carrito de compras
+
 ## Requerimientos
 
 - Node v20.15.0 LTS
@@ -150,6 +162,8 @@ npx prisma generate
 npm run seed
 ```
 
+- Limpiar el `LocalStorage` del navegador
+- Limpiar `cookies` del navegador
 - levantar el proyecto
 
 ```

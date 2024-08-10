@@ -1,6 +1,10 @@
 export { authenticate, loginClient } from './auth/login';
+export { getCountries } from './country/get-country';
 export { getPaginatedProductsWithImages } from './products/product-pagination';
 export { getProductBySlug } from './products/get-product-by-slug';
 export { getStockBySlug } from './products/get-stock-by-slug';
 export { logout } from './auth/logout';
 export { registerUser } from './auth/register';
+export { setUserAddress } from './address/set-user-address';
+export { deleteUserAddress } from './address/delete-user-address';
+export { getUserAddress } from './address/get-user-address';

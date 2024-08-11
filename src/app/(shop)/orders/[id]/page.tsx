@@ -1,17 +1,11 @@
 import { getOrderById } from '@/actions';
-import { Title } from '@/components';
-import { initialData } from '@/seed/seed';
+import { PayPalButton, Title } from '@/components';
 import { currencyFormatter } from '@/utils';
 import clsx from 'clsx';
 import Image from 'next/image';
 import { redirect } from 'next/navigation';
 import { IoCartOutline } from 'react-icons/io5';
 
-const productsInCart = [
-    initialData.products.at( 0 ),
-    initialData.products.at( 1 ),
-    initialData.products.at( 2 ),
-];
 
 interface Props {
     params: {
@@ -36,7 +30,10 @@ export default async function OrderPage ( { params }: Readonly<Props> ) {
     return (
         <div className='flex justify-center items-center px-10 sm:px-0'>
             <div className='flex flex-col w-[1000px]'>
-                <Title title={ `Orden #${ id }` } />
+                <Title title={ 'Orden de compra' } />
+                <div className='text-sm relative -top-3'>
+                    <span className='font-bold'>N° de orden: </span><span>{ id }</span>
+                </div>
                 <div className='grid grid-cols-1 md:grid-cols-2 gap-10 mt-5'>
                     {/* carrito */ }
                     <div className='flex flex-col'>
@@ -100,7 +97,11 @@ export default async function OrderPage ( { params }: Readonly<Props> ) {
                             <span className='font-bold text-2xl mt-5'>TOTAL</span>
                             <span className='text-right text-2xl mt-5'>{ currencyFormatter( order!.total ) }</span>
                         </div>
-
+                        {
+                            !order!.isPaid && (
+                                <PayPalButton orderId={ order!.id } amount={ order!.total } />
+                            )
+                        }
                     </div>
                 </div>
             </div>

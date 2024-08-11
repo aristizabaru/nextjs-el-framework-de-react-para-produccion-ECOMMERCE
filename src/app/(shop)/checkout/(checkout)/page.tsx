@@ -3,7 +3,6 @@ import Link from 'next/link';
 import { ProductsInCart } from './ui/ProductsInCart';
 import { PlaceOrder } from './ui/PlaceOrder';
 
-
 export default function CheckoutPage () {
     return (
         <div className='flex justify-center items-center px-10 sm:px-0'>

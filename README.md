@@ -110,6 +110,15 @@ El proyecto desarrollado a continuación explora la creación de una ecommerce c
 - Server actions
 - Consideraciones a la hora de crear la orden basado en un carrito de compras
 
+**Mecanismo para pago con terceros (pasarela de pagos - PayPal)**
+
+- Generar el intento de pago
+- Realizar el Cobro en PayPal
+- Validar el pago desde el lado de PayPal
+- Registrar el pago y la fecha de pago
+- Marcar la orden como pagada
+- Configuraciones en el Sandbox de PayPal
+
 ## Requerimientos
 
 - Node v20.15.0 LTS

@@ -3,8 +3,6 @@
 import { useCartStore } from '@/store';
 import { currencyFormatter } from '@/utils';
 import Image from 'next/image';
-
-import { redirect } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
 export const ProductsInCart = () => {

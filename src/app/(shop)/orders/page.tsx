@@ -4,7 +4,6 @@ export const revalidate = 0;
 import { getOrderByUser } from '@/actions';
 import { Title } from '@/components';
 import clsx from 'clsx';
-
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { IoCardOutline } from 'react-icons/io5';
@@ -14,8 +13,6 @@ export default async function OrdersPage () {
     const { ok, orders = [] } = await getOrderByUser();
 
     if ( !ok ) redirect( '/auth/login' );
-
-
 
     return (
         <>

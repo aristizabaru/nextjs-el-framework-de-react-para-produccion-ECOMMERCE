@@ -1,3 +1,4 @@
+import { setTransactionId } from './payments/set-transaction-id';
 export { authenticate, loginClient } from './auth/login';
 export { deleteUserAddress } from './address/delete-user-address';
 export { getCountries } from './country/get-country';
@@ -11,3 +12,5 @@ export { logout } from './auth/logout';
 export { placeOrder } from './order/place-order';
 export { registerUser } from './auth/register';
 export { setUserAddress } from './address/set-user-address';
+export { setTransactionId } from './payments/set-transaction-id';
+export { PayPalCheckPayment } from './payments/paypal-check-payment';

@@ -113,19 +113,20 @@ model UserAddress {
 
 // Ordenes de compra
 model Order {
-  id           String        @id @default(uuid())
-  subTotal     Float         @map("sub_total")
-  tax          Float
-  total        Float
-  itemsInOrder Int           @map("items_in_order")
-  isPaid       Boolean       @default(false) @map("is_paid")
-  paidAt       DateTime?     @map("paid_at")
-  createdAt    DateTime      @default(now()) @map("created_at")
-  updatedAt    DateTime      @updatedAt @map("updated_at")
-  user         User          @relation(fields: [userId], references: [id])
-  userId       String        @map("user_id")
-  orderItem    OrderItem[]
-  orderAddress OrderAddress?
+  id            String        @id @default(uuid())
+  subTotal      Float         @map("sub_total")
+  tax           Float
+  total         Float
+  itemsInOrder  Int           @map("items_in_order")
+  isPaid        Boolean       @default(false) @map("is_paid")
+  paidAt        DateTime?     @map("paid_at")
+  createdAt     DateTime      @default(now()) @map("created_at")
+  updatedAt     DateTime      @updatedAt @map("updated_at")
+  user          User          @relation(fields: [userId], references: [id])
+  userId        String        @map("user_id")
+  orderItem     OrderItem[]
+  orderAddress  OrderAddress?
+  transactionId String?       @map("transaction_id")
 
   @@map("order")
 }

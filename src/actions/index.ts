@@ -14,3 +14,8 @@ export { registerUser } from './auth/register';
 export { setUserAddress } from './address/set-user-address';
 export { setTransactionId } from './payments/set-transaction-id';
 export { PayPalCheckPayment } from './payments/paypal-check-payment';
+export { getPaginatedOrders } from './order/get-paginated-orders';
+export { getPaginatedUsers } from './users/get-paginated-users';
+export { changeUserRole } from './users/change-user-role';
+export { getProductCategories } from './products/get-product-categories.ts';
+export { createUpdateProduct } from './products/create-update-product';

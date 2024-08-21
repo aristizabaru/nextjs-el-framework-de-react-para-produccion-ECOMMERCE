@@ -119,6 +119,17 @@ El proyecto desarrollado a continuación explora la creación de una ecommerce c
 - Marcar la orden como pagada
 - Configuraciones en el Sandbox de PayPal
 
+**Mantenimientos administrativos**
+
+- Usuarios
+  - Cambiar Roles
+- Ordenes
+  - Ver todas las ordenes realizadas de todos los usuarios
+- Productos
+  - Creación
+  - Edición
+  - Carga de archivos mediante server actions
+
 ## Requerimientos
 
 - Node v20.15.0 LTS

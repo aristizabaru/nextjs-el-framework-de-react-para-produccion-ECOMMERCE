@@ -8,11 +8,7 @@ export const getProductBySlug = async ( slug: string ) => {
                 slug: slug
             },
             include: {
-                productImages: {
-                    select: {
-                        url: true,
-                    }
-                }
+                productImages: true
             }
         } );
 
@@ -23,7 +19,8 @@ export const getProductBySlug = async ( slug: string ) => {
 
         return {
             ...rest,
-            images: product.productImages.map( image => image.url )
+            images: product.productImages.map( image => image.url ),
+            productImages,
         };
     } catch ( error ) {
         throw new Error( 'No se pudo cargar el producto' );

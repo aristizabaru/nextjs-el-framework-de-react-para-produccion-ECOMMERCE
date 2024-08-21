@@ -15,7 +15,7 @@ export const setTransactionId = async ( orderId: string, transactionId: string )
         } );
 
         if ( !updatedOrder ) throw new Error();
-        console.log( { updatedOrder } );
+
         return {
             ok: true
         };

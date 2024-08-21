@@ -1,6 +1,6 @@
 'use client';
 
-import { QuantitySelector } from '@/components';
+import { ProductImage, QuantitySelector } from '@/components';
 import { useCartStore } from '@/store';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -41,7 +41,7 @@ export const ProductsInCart = () => {
             {
                 productsInCart.map( product => (
                     <div key={ `${ product.slug }-${ product.size }` } className='flex mb-4'>
-                        <Image
+                        <ProductImage
                             src={ `/products/${ product.image }` }
                             alt={ product?.title ?? 'Teslo shop' }
                             width={ 100 }
@@ -50,7 +50,6 @@ export const ProductsInCart = () => {
                                 maxWidth: '100px',
                                 height: 'auto',
                             } }
-                            priority
                             className='mr-5'
                         />
                         <div>
